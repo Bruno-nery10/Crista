@@ -16,6 +16,10 @@ import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775072312455.jpg";
 import kidImage from "@assets/Gemini_Generated_Image_jqq4tpjqq4tpjqq4_1775072717175.png";
 import whatsappIcon from "@assets/icone-redondo-do-aplicativo-whatsapp-mensageiro-popular-logo-_1775073841533.avif";
 import guaranteeBadge from "@assets/7-dias-garantia_1775073364898.webp";
+import bonus1 from "@assets/ChatGPT_Image_1_de_abr._de_2026,_17_18_30_1775075294438.png";
+import bonus2 from "@assets/ChatGPT_Image_1_de_abr._de_2026,_17_20_31_1775075294438.png";
+import bonus3 from "@assets/ChatGPT_Image_1_de_abr._de_2026,_17_22_04_1775075294438.png";
+import bonus4 from "@assets/ChatGPT_Image_1_de_abr._de_2026,_17_23_55_1775075294437.png";
 
 const ACTIVITY_IMAGES = [
   { src: act1, label: "O que é a Quaresma?" },
@@ -730,6 +734,76 @@ export default function Home() {
               </Card>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ───── BONUSES ───── */}
+      <section className="w-full py-20 relative overflow-hidden"
+        style={{ background: "linear-gradient(160deg, hsl(228 58% 12%) 0%, hsl(228 58% 22%) 100%)" }}>
+        <div className="absolute inset-0 pointer-events-none opacity-15"
+          style={{ backgroundImage: "radial-gradient(circle at 80% 20%, hsl(40 88% 60%) 0%, transparent 50%)" }} />
+
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
+          {/* Header */}
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <span className="inline-block bg-accent/20 text-accent text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-accent/30">
+              🎁 Exclusivo no Plano Completo
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+              Bônus que valem muito — e são seus de graça
+            </h2>
+            <p className="text-white/60 text-base max-w-xl mx-auto">
+              Ao escolher o Plano Jornada com Deus 365, você recebe todos esses bônus sem pagar nada a mais.
+            </p>
+          </motion.div>
+
+          {/* Bonus cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+            {[
+              { img: bonus1, num: "01", name: "Cartões Bíblicos para Memorização", original: 67 },
+              { img: bonus2, num: "02", name: "Rotina Cristã Infantil", original: 47 },
+              { img: bonus3, num: "03", name: "21 Histórias Bíblicas Ilustradas", original: 35 },
+              { img: bonus4, num: "04", name: "Guia para Pais", original: 55 },
+            ].map((b, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden flex flex-col backdrop-blur-sm hover:bg-white/10 transition-colors duration-200"
+              >
+                <div className="relative">
+                  <img
+                    src={b.img}
+                    alt={b.name}
+                    className="w-full aspect-[3/4] object-cover object-top"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+                    BÔNUS {b.num}
+                  </div>
+                </div>
+                <div className="p-4 flex flex-col flex-1 items-center text-center gap-2">
+                  <p className="text-white font-semibold text-sm leading-snug">{b.name}</p>
+                  <div className="mt-auto flex flex-col items-center gap-0.5">
+                    <span className="text-white/40 text-xs line-through">De R$ {b.original},00</span>
+                    <span className="text-green-400 font-bold text-lg">GRÁTIS 🎉</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Total value banner */}
+          <motion.div
+            {...fadeUp}
+            className="rounded-2xl border border-accent/40 bg-accent/10 px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-3 text-center"
+          >
+            <span className="text-3xl">🏆</span>
+            <p className="text-white font-bold text-lg sm:text-xl">
+              São <span className="text-accent text-2xl">R$ 204,00</span> em bônus exclusivos —{" "}
+              <span className="text-green-400">tudo incluso no seu plano!</span>
+            </p>
+          </motion.div>
         </div>
       </section>
 
