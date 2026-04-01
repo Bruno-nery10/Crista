@@ -7,13 +7,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 import productImage from "@assets/Gemini_Generated_Image_sc4dwfsc4dwfsc4d-removebg-preview_1775067577891.png";
-import act1 from "@assets/a8bfbf1b7124173a5e7dafe42c02cb49_1775070508977.jpg";
-import act2 from "@assets/3017c4596614d5ba827be7442d730698_1775070508977.jpg";
-import act3 from "@assets/49aaf433f5464a5e5efc72fbdaad2879_1775070508977.jpg";
-import act4 from "@assets/07be2bd8224e7c8102b5e6379c2197b9_1775070508978.jpg";
-import act5 from "@assets/4debfcc2071331c826c1133b10cf64b6_1775070508978.jpg";
-import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775070508978.jpg";
-import act7 from "@assets/D_NQ_NP_972027-MLB84395174555_052025-O_1775070508979.jpg";
+import act1 from "@assets/a8bfbf1b7124173a5e7dafe42c02cb49_1775072312454.jpg";
+import act2 from "@assets/3017c4596614d5ba827be7442d730698_1775072312454.jpg";
+import act3 from "@assets/49aaf433f5464a5e5efc72fbdaad2879_1775072312454.jpg";
+import act4 from "@assets/07be2bd8224e7c8102b5e6379c2197b9_1775072312455.jpg";
+import act5 from "@assets/4debfcc2071331c826c1133b10cf64b6_1775072312455.jpg";
+import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775072312455.jpg";
 
 const ACTIVITY_IMAGES = [
   { src: act1, label: "O que é a Quaresma?" },
@@ -22,7 +21,6 @@ const ACTIVITY_IMAGES = [
   { src: act4, label: "Minha Atividade — Semana Santa" },
   { src: act5, label: "Atividade Bíblica — Noé e Davi" },
   { src: act6, label: "Palavras-Cruzadas — Jó" },
-  { src: act7, label: "Caminhos Bíblicos — Adão e Eva" },
 ];
 
 function ActivityCarousel() {
@@ -326,8 +324,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ───── ACTIVITY PREVIEW ───── */}
+      <section className="w-full py-16 bg-white border-y border-border overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 text-center mb-10">
+          <motion.div {...fadeUp}>
+            <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+              Prévia das Atividades
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Veja como são as atividades
+            </h2>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
+              Arraste ou use as setas para explorar uma amostra das 365 atividades bíblicas do seu filho.
+            </p>
+          </motion.div>
+        </div>
+        <motion.div {...fadeUp} transition={{ delay: 0.15 }}>
+          <ActivityCarousel />
+        </motion.div>
+      </section>
+
       {/* ───── WHAT YOU GET + BENEFITS ───── */}
-      <section className="w-full py-16 bg-white border-y border-border">
+      <section className="w-full py-16 bg-primary/5 border-y border-border">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16">
           <motion.div {...fadeUp}>
             <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
