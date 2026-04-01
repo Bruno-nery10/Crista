@@ -658,7 +658,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-6 items-stretch">
             {/* Basic Plan */}
             <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="flex-1">
-              <Card className="h-full bg-white/8 border border-white/15 text-white backdrop-blur-sm flex flex-col">
+              <Card className="h-full bg-white/15 border border-white/30 text-white backdrop-blur-sm flex flex-col">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg sm:text-xl font-bold text-white/90">
                     PLANO ESSENCIAL COM DEUS
