@@ -13,6 +13,7 @@ import act3 from "@assets/49aaf433f5464a5e5efc72fbdaad2879_1775072312454.jpg";
 import act4 from "@assets/07be2bd8224e7c8102b5e6379c2197b9_1775072312455.jpg";
 import act5 from "@assets/4debfcc2071331c826c1133b10cf64b6_1775072312455.jpg";
 import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775072312455.jpg";
+import kidImage from "@assets/Gemini_Generated_Image_jqq4tpjqq4tpjqq4_1775072717175.png";
 
 const ACTIVITY_IMAGES = [
   { src: act1, label: "O que é a Quaresma?" },
@@ -318,6 +319,82 @@ export default function Home() {
               através de atividades leves, educativas e com propósito espiritual.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ───── LIFESTYLE IMAGE + PHRASES ───── */}
+      <section className="w-full py-0 overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-0">
+
+          {/* Image side */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="w-full lg:w-1/2"
+          >
+            <img
+              src={kidImage}
+              alt="Criança feliz fazendo atividades bíblicas"
+              className="w-full h-auto object-cover lg:rounded-r-3xl"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Phrases side */}
+          <div className="w-full lg:w-1/2 px-8 py-16 lg:py-20 flex flex-col gap-8">
+            {[
+              {
+                icon: "✝️",
+                title: "Fé que cresce todo dia",
+                text: "Cada atividade é uma semente plantada no coração do seu filho. Em apenas 10 minutos, você cria um momento eterno.",
+                delay: 0.1,
+              },
+              {
+                icon: "📖",
+                title: "A Bíblia de um jeito simples",
+                text: "Histórias, cruzadinhas e desafios que tornam a Palavra de Deus divertida, viva e inesquecível para as crianças.",
+                delay: 0.25,
+              },
+              {
+                icon: "🏠",
+                title: "Um lar com propósito",
+                text: "Pais que ensinam o caminho de Deus em casa constroem raízes que nenhuma influência do mundo consegue arrancar.",
+                delay: 0.4,
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: item.delay, ease: "easeOut" }}
+                className="flex gap-4 items-start"
+              >
+                <div className="text-3xl mt-0.5 shrink-0">{item.icon}</div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{item.text}</p>
+                </div>
+              </motion.div>
+            ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.55 }}
+            >
+              <Button
+                size="lg"
+                className="h-13 px-8 text-sm sm:text-base font-bold rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg"
+                onClick={scrollToPricing}
+              >
+                QUERO ESSA TRANSFORMAÇÃO
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
