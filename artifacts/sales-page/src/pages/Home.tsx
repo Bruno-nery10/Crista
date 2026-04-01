@@ -836,10 +836,9 @@ export default function Home() {
 
       {/* ───── FOOTER ───── */}
       <footer className="w-full bg-foreground text-white/50 py-6 px-4">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
-          <p>© 2026 365 Atividades Bíblicas — Todos os direitos reservados.</p>
-          <p className="flex items-center gap-1.5"><Lock className="w-3 h-3" /> Ambiente 100% seguro e criptografado</p>
-        </div>
+        <p className="text-center text-xs whitespace-nowrap overflow-hidden text-ellipsis">
+          © 2026 365 Atividades Bíblicas — Todos os direitos reservados &nbsp;|&nbsp; <Lock className="w-3 h-3 inline-block align-middle" /> Ambiente 100% seguro e criptografado
+        </p>
       </footer>
 
       {/* ───── UPSELL POPUP ───── */}
