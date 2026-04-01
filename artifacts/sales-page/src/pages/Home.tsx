@@ -1,12 +1,168 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Star, Lock, Zap, Shield, Heart, HeartHandshake, CheckCircle2 } from "lucide-react";
+import { Check, Star, Lock, Zap, Shield, Heart, HeartHandshake, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 import productImage from "@assets/Gemini_Generated_Image_sc4dwfsc4dwfsc4d-removebg-preview_1775067577891.png";
+import act1 from "@assets/a8bfbf1b7124173a5e7dafe42c02cb49_1775070508977.jpg";
+import act2 from "@assets/3017c4596614d5ba827be7442d730698_1775070508977.jpg";
+import act3 from "@assets/49aaf433f5464a5e5efc72fbdaad2879_1775070508977.jpg";
+import act4 from "@assets/07be2bd8224e7c8102b5e6379c2197b9_1775070508978.jpg";
+import act5 from "@assets/4debfcc2071331c826c1133b10cf64b6_1775070508978.jpg";
+import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775070508978.jpg";
+import act7 from "@assets/D_NQ_NP_972027-MLB84395174555_052025-O_1775070508979.jpg";
+
+const ACTIVITY_IMAGES = [
+  { src: act1, label: "O que é a Quaresma?" },
+  { src: act2, label: "História da Páscoa" },
+  { src: act3, label: "Cruzadinha da Páscoa" },
+  { src: act4, label: "Minha Atividade — Semana Santa" },
+  { src: act5, label: "Atividade Bíblica — Noé e Davi" },
+  { src: act6, label: "Palavras-Cruzadas — Jó" },
+  { src: act7, label: "Caminhos Bíblicos — Adão e Eva" },
+];
+
+function ActivityCarousel() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number>(0);
+  const posRef = useRef(0);
+  const pausedRef = useRef(false);
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragScrollRef = useRef(0);
+
+  // Duplicate images for seamless infinite loop
+  const items = [...ACTIVITY_IMAGES, ...ACTIVITY_IMAGES, ...ACTIVITY_IMAGES];
+
+  const CARD_W = 260;
+  const GAP = 20;
+  const UNIT = CARD_W + GAP;
+  const LOOP_WIDTH = ACTIVITY_IMAGES.length * UNIT;
+  const SPEED = 0.45; // px per frame — slow and harmonious
+
+  const tick = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    if (!pausedRef.current && !isDraggingRef.current) {
+      posRef.current += SPEED;
+      if (posRef.current >= LOOP_WIDTH) posRef.current -= LOOP_WIDTH;
+      track.style.transform = `translateX(${-posRef.current}px)`;
+    }
+    rafRef.current = requestAnimationFrame(tick);
+  }, [LOOP_WIDTH]);
+
+  useEffect(() => {
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [tick]);
+
+  const nudge = (dir: 1 | -1) => {
+    posRef.current = Math.max(0, posRef.current + dir * UNIT);
+    if (posRef.current >= LOOP_WIDTH) posRef.current -= LOOP_WIDTH;
+    if (trackRef.current) trackRef.current.style.transform = `translateX(${-posRef.current}px)`;
+  };
+
+  // Mouse drag
+  const onMouseDown = (e: React.MouseEvent) => {
+    isDraggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragScrollRef.current = posRef.current;
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingRef.current) return;
+    const delta = dragStartXRef.current - e.clientX;
+    posRef.current = dragScrollRef.current + delta;
+    if (posRef.current < 0) posRef.current += LOOP_WIDTH;
+    if (posRef.current >= LOOP_WIDTH) posRef.current -= LOOP_WIDTH;
+    if (trackRef.current) trackRef.current.style.transform = `translateX(${-posRef.current}px)`;
+  };
+  const onMouseUp = () => { isDraggingRef.current = false; };
+
+  // Touch drag
+  const onTouchStart = (e: React.TouchEvent) => {
+    isDraggingRef.current = true;
+    dragStartXRef.current = e.touches[0].clientX;
+    dragScrollRef.current = posRef.current;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!isDraggingRef.current) return;
+    const delta = dragStartXRef.current - e.touches[0].clientX;
+    posRef.current = dragScrollRef.current + delta;
+    if (posRef.current < 0) posRef.current += LOOP_WIDTH;
+    if (posRef.current >= LOOP_WIDTH) posRef.current -= LOOP_WIDTH;
+    if (trackRef.current) trackRef.current.style.transform = `translateX(${-posRef.current}px)`;
+  };
+  const onTouchEnd = () => { isDraggingRef.current = false; };
+
+  return (
+    <div className="relative w-full">
+      {/* Arrow left */}
+      <button
+        onClick={() => nudge(-1)}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 border border-border shadow-md rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-150"
+        aria-label="Anterior"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+
+      {/* Arrow right */}
+      <button
+        onClick={() => nudge(1)}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 border border-border shadow-md rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-150"
+        aria-label="Próxima"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      {/* Viewport */}
+      <div
+        className="overflow-hidden cursor-grab active:cursor-grabbing px-12"
+        onMouseEnter={() => { pausedRef.current = true; }}
+        onMouseLeave={() => { pausedRef.current = false; isDraggingRef.current = false; }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {/* Track */}
+        <div
+          ref={trackRef}
+          className="flex will-change-transform"
+          style={{ gap: GAP, userSelect: "none" }}
+        >
+          {items.map((img, i) => (
+            <div
+              key={i}
+              className="shrink-0 rounded-xl overflow-hidden shadow-md border border-border bg-white"
+              style={{ width: CARD_W }}
+            >
+              <img
+                src={img.src}
+                alt={img.label}
+                draggable={false}
+                className="w-full object-cover"
+                style={{ height: 340 }}
+                loading="lazy"
+              />
+              <div className="px-3 py-2 text-xs font-medium text-muted-foreground text-center">
+                {img.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Gradient fade edges */}
+      <div className="pointer-events-none absolute top-0 left-12 w-12 h-full bg-gradient-to-r from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute top-0 right-12 w-12 h-full bg-gradient-to-l from-background to-transparent z-10" />
+    </div>
+  );
+}
 
 const TESTIMONIALS = [
   {
