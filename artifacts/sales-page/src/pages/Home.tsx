@@ -20,24 +20,10 @@ export default function Home() {
   });
   const [allChecked, setAllChecked] = useState(false);
   const [upsellOpen, setUpsellOpen] = useState(false);
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
-
   useEffect(() => {
     const all = Object.values(checkboxes).every((v) => v);
     setAllChecked(all);
   }, [checkboxes]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 500) {
-        setShowStickyCTA(true);
-      } else {
-        setShowStickyCTA(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const handleCheckout = (plan: string) => {
     // In a real app this would go to checkout
@@ -52,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAF7] font-sans selection:bg-primary selection:text-white pb-24 lg:pb-0 overflow-x-hidden">
+    <div className="min-h-screen bg-[#FAFAF7] font-sans selection:bg-primary selection:text-white overflow-x-hidden">
       {/* 1. HERO SECTION */}
       <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col items-center text-center">
         <motion.div 
@@ -509,25 +495,6 @@ export default function Home() {
           </p>
         </motion.div>
       </section>
-
-      {/* STICKY CTA (Mobile only) */}
-      <AnimatePresence>
-        {showStickyCTA && (
-          <motion.div 
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            exit={{ y: 100 }}
-            className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-md border-t border-gray-200 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-50 lg:hidden"
-          >
-            <Button 
-              className="w-full h-14 text-lg font-bold bg-primary text-white rounded-full shadow-lg"
-              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              QUERO ENSINAR MEU FILHO
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* 9. UPSELL POPUP */}
       <Dialog open={upsellOpen} onOpenChange={setUpsellOpen}>
