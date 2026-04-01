@@ -657,11 +657,11 @@ export default function Home() {
           </h2>
           <Button
             size="lg"
-            className="w-full sm:w-auto h-16 px-8 text-base sm:text-lg font-bold rounded-full shadow-xl bg-primary hover:bg-primary/90 text-white"
+            className="w-full max-w-sm mx-auto h-14 px-6 text-sm sm:text-base font-bold rounded-full shadow-xl bg-primary hover:bg-primary/90 text-white leading-tight"
             onClick={scrollToPricing}
             data-testid="button-final-cta"
           >
-            QUERO COMEÇAR A JORNADA COM DEUS AGORA
+            COMEÇAR A JORNADA COM DEUS AGORA
           </Button>
           <p className="mt-5 text-xs sm:text-sm text-muted-foreground flex items-center justify-center gap-1.5">
             <Lock className="w-3.5 h-3.5" /> Pagamento seguro via Pix ou Cartão
