@@ -243,8 +243,8 @@ export default function Home() {
           padding: scrolled ? "6px 16px" : "10px 16px",
         }}
       >
-        <p className="text-center font-bold tracking-widest uppercase text-white/95 transition-all duration-500"
-          style={{ fontSize: scrolled ? "10px" : "13px", letterSpacing: scrolled ? "0.18em" : "0.22em" }}>
+        <p className="text-center font-bold uppercase text-white/95 transition-all duration-500 truncate"
+          style={{ fontSize: scrolled ? "9px" : "11px", letterSpacing: scrolled ? "0.12em" : "0.18em" }}>
           🎁 PROMOÇÃO APENAS NESSA PÁGINA — OFERTA POR TEMPO LIMITADO 🎁
         </p>
       </div>
@@ -350,8 +350,8 @@ export default function Home() {
       </section>
 
       {/* ───── LIFESTYLE IMAGE + PHRASES ───── */}
-      <section className="w-full py-0 overflow-hidden">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-0">
+      <section className="w-full overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
 
           {/* Image side */}
           <motion.div
@@ -370,7 +370,7 @@ export default function Home() {
           </motion.div>
 
           {/* Phrases side */}
-          <div className="w-full lg:w-1/2 px-8 py-16 lg:py-20 flex flex-col gap-8">
+          <div className="w-full lg:w-1/2 px-6 sm:px-10 py-12 lg:py-20 flex flex-col gap-8 items-center lg:items-start text-center lg:text-left">
             {[
               {
                 icon: "✝️",
@@ -397,9 +397,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: item.delay, ease: "easeOut" }}
-                className="flex gap-4 items-start"
+                className="flex flex-col sm:flex-row gap-4 items-center lg:items-start"
               >
-                <div className="text-3xl mt-0.5 shrink-0">{item.icon}</div>
+                <div className="text-3xl shrink-0">{item.icon}</div>
                 <div>
                   <h3 className="text-lg font-bold text-foreground mb-1">{item.title}</h3>
                   <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{item.text}</p>
