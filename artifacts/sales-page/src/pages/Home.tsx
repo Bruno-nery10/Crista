@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Star, Lock, Zap, Shield, Heart, HeartHandshake, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, Star, Lock, Zap, Shield, Heart, HeartHandshake, CheckCircle2, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -14,6 +14,7 @@ import act4 from "@assets/07be2bd8224e7c8102b5e6379c2197b9_1775072312455.jpg";
 import act5 from "@assets/4debfcc2071331c826c1133b10cf64b6_1775072312455.jpg";
 import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775072312455.jpg";
 import kidImage from "@assets/Gemini_Generated_Image_jqq4tpjqq4tpjqq4_1775072717175.png";
+import guaranteeBadge from "@assets/7-dias-garantia_1775073364898.webp";
 
 const ACTIVITY_IMAGES = [
   { src: act1, label: "O que é a Quaresma?" },
@@ -210,6 +211,13 @@ export default function Home() {
     learn: false, values: false, routine: false, negative: false, focus: false,
   });
   const [upsellOpen, setUpsellOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const allChecked = CHECKBOXES.every((c) => checked[c.id]);
   const checkedCount = CHECKBOXES.filter((c) => checked[c.id]).length;
@@ -224,6 +232,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+
+      {/* ───── PROMO BANNER ───── */}
+      <div
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          backgroundColor: scrolled ? "rgba(30,27,75,0.55)" : "hsl(228 58% 28%)",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+          padding: scrolled ? "6px 16px" : "10px 16px",
+        }}
+      >
+        <p className="text-center font-bold tracking-widest uppercase text-white/95 transition-all duration-500"
+          style={{ fontSize: scrolled ? "10px" : "13px", letterSpacing: scrolled ? "0.18em" : "0.22em" }}>
+          🎁 PROMOÇÃO APENAS NESSA PÁGINA — OFERTA POR TEMPO LIMITADO 🎁
+        </p>
+      </div>
+
+      {/* spacer for fixed banner */}
+      <div className="h-10" />
 
       {/* ───── HERO ───── */}
       <section className="w-full px-4 pt-10 pb-16 flex flex-col items-center text-center max-w-5xl mx-auto">
@@ -419,49 +446,67 @@ export default function Home() {
       </section>
 
       {/* ───── WHAT YOU GET + BENEFITS ───── */}
-      <section className="w-full py-16 bg-primary/5 border-y border-border">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16">
-          <motion.div {...fadeUp}>
-            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <CheckCircle2 className="text-primary w-6 h-6 shrink-0" /> O que você vai receber
-            </h3>
-            <ul className="space-y-4">
-              {[
-                "365 atividades bíblicas prontas para imprimir",
-                "Organização por dias",
-                "Fácil aplicação",
-                "Conteúdo educativo e cristão",
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div className="bg-primary/10 p-1.5 rounded-full mt-0.5 shrink-0">
-                    <Check className="w-4 h-4 text-primary" />
-                  </div>
-                  <span className="text-base text-foreground/80">{item}</span>
-                </li>
-              ))}
-            </ul>
+      <section className="w-full py-20 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, hsl(228 58% 96%) 0%, hsl(40 88% 97%) 100%)" }}>
+        <div className="absolute inset-0 pointer-events-none opacity-20"
+          style={{ backgroundImage: "radial-gradient(circle at 20% 50%, hsl(228 58% 70%) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsl(40 88% 70%) 0%, transparent 45%)" }} />
+
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <span className="inline-block bg-white border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 shadow-sm">
+              Tudo que você vai receber
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+              Uma jornada completa de fé para seu filho
+            </h2>
           </motion.div>
 
-          <motion.div {...fadeUp} transition={{ delay: 0.15 }}>
-            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <HeartHandshake className="text-accent w-6 h-6 shrink-0" /> Benefícios
+          {/* Receive cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+            {[
+              { icon: "📋", title: "365 Atividades", desc: "Prontas para imprimir, organizadas por dia do ano" },
+              { icon: "📖", title: "Conteúdo Bíblico", desc: "Histórias, cruzadinhas e desafios da Palavra de Deus" },
+              { icon: "🗓️", title: "Rotina Diária", desc: "10 minutos por dia constroem uma vida com Deus" },
+              { icon: "✝️", title: "Valores Cristãos", desc: "Fé, amor, perdão e bondade ensinados com leveza" },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ delay: i * 0.08 }}
+                className="bg-white rounded-2xl p-6 text-center shadow-sm border border-white/80 hover:shadow-md transition-shadow duration-200"
+              >
+                <div className="text-4xl mb-3">{card.icon}</div>
+                <h4 className="font-bold text-foreground mb-1 text-base">{card.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Benefits */}
+          <motion.div {...fadeUp} className="bg-white rounded-2xl p-8 shadow-sm border border-white/80">
+            <h3 className="text-xl font-bold text-foreground text-center mb-8 flex items-center justify-center gap-2">
+              <HeartHandshake className="text-accent w-6 h-6" /> Benefícios para toda a família
             </h3>
-            <ul className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                "Fortalece a fé desde cedo",
-                "Ensina valores cristãos",
-                "Cria rotina com Deus",
-                "Aproxima pais e filhos",
-                "Desenvolve disciplina e foco",
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div className="bg-accent/10 p-1.5 rounded-full mt-0.5 shrink-0">
-                    <Star className="w-4 h-4 text-accent" />
-                  </div>
-                  <span className="text-base text-foreground/80">{item}</span>
-                </li>
+                { icon: "🌱", text: "Fortalece a fé desde cedo" },
+                { icon: "🕊️", text: "Traz paz e propósito ao lar" },
+                { icon: "❤️", text: "Aproxima pais e filhos" },
+                { icon: "🎯", text: "Desenvolve disciplina e foco" },
+                { icon: "🛡️", text: "Protege de influências negativas" },
+                { icon: "🙏", text: "Cria uma rotina com Deus" },
+              ].map((b, i) => (
+                <motion.div
+                  key={i}
+                  {...fadeUp}
+                  transition={{ delay: i * 0.07 }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-primary/4 border border-primary/10"
+                >
+                  <span className="text-2xl shrink-0">{b.icon}</span>
+                  <span className="text-sm font-medium text-foreground/85">{b.text}</span>
+                </motion.div>
               ))}
-            </ul>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -687,17 +732,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ───── WHATSAPP DELIVERY ───── */}
+      <section className="w-full py-16 bg-white border-b border-border">
+        <div className="max-w-3xl mx-auto px-4">
+          <motion.div {...fadeUp} className="rounded-2xl overflow-hidden shadow-lg border border-green-100">
+            <div className="bg-gradient-to-r from-green-500 to-green-600 px-6 py-5 flex items-center gap-4">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md shrink-0">
+                <MessageCircle className="w-7 h-7 text-green-500" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Acesso direto no seu WhatsApp</h3>
+                <p className="text-green-100 text-sm">Plano Jornada com Deus 365 — Entrega imediata</p>
+              </div>
+            </div>
+            <div className="bg-green-50 px-6 py-6">
+              <p className="text-foreground/80 text-base leading-relaxed mb-5">
+                Após a confirmação do pagamento, você receberá <strong>todos os materiais diretamente no WhatsApp</strong> — sem complicação, sem espera. É só acessar e começar com seu filho!
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {[
+                  { icon: "⚡", label: "Acesso imediato", desc: "Em minutos após o pagamento" },
+                  { icon: "📱", label: "Via WhatsApp", desc: "Tudo no seu celular" },
+                  { icon: "🔁", label: "Acesso vitalício", desc: "Baixe quando quiser" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm border border-green-100">
+                    <span className="text-2xl">{item.icon}</span>
+                    <div>
+                      <p className="font-bold text-foreground text-sm">{item.label}</p>
+                      <p className="text-muted-foreground text-xs">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ───── GUARANTEE ───── */}
       <section className="w-full py-16 bg-white border-b border-border">
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <motion.div {...fadeUp} className="flex flex-col items-center">
-            <div className="w-20 h-20 bg-primary/8 rounded-full flex items-center justify-center mb-5 shadow-sm">
-              <Shield className="w-10 h-10 text-primary" />
+          <motion.div {...fadeUp} className="flex flex-col sm:flex-row items-center gap-8 bg-amber-50 rounded-2xl p-8 border border-amber-100 shadow-sm">
+            <img
+              src={guaranteeBadge}
+              alt="7 dias de garantia — 100% dinheiro de volta"
+              className="w-36 h-36 object-contain shrink-0 drop-shadow-md"
+              loading="lazy"
+            />
+            <div className="text-left">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">Garantia Incondicional de 7 Dias</h2>
+              <p className="text-base text-foreground/75 leading-relaxed">
+                Se por qualquer motivo você não ficar satisfeito, devolvemos <strong>100% do seu dinheiro</strong> sem perguntas dentro de 7 dias. Você tem risco zero — a decisão é totalmente segura.
+              </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">Garantia Incondicional de 7 Dias</h2>
-            <p className="text-base sm:text-lg text-muted-foreground">
-              Se não gostar, devolvemos seu dinheiro sem perguntas. Você tem acesso imediato e risco zero.
-            </p>
           </motion.div>
         </div>
       </section>
@@ -745,6 +832,51 @@ export default function Home() {
           </p>
         </motion.div>
       </section>
+
+      {/* ───── FOOTER ───── */}
+      <footer className="w-full bg-foreground text-white/70 pt-14 pb-8 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-12">
+            {/* Brand */}
+            <div>
+              <h4 className="text-white font-bold text-lg mb-3">365 Atividades Bíblicas</h4>
+              <p className="text-sm leading-relaxed mb-4">
+                Um plano prático para fortalecer a fé do seu filho e criar uma rotina com Deus desde cedo.
+              </p>
+              <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
+                <MessageCircle className="w-4 h-4" /> Suporte via WhatsApp
+              </div>
+            </div>
+
+            {/* Links */}
+            <div>
+              <h4 className="text-white font-bold mb-3">Informações</h4>
+              <ul className="space-y-2 text-sm">
+                <li>📋 Política de Privacidade</li>
+                <li>📄 Termos de Uso</li>
+                <li>🔒 Compra 100% Segura</li>
+                <li>✅ Aprovado pelo Mercado Pago</li>
+              </ul>
+            </div>
+
+            {/* Trust */}
+            <div>
+              <h4 className="text-white font-bold mb-3">Segurança & Garantia</h4>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2"><Shield className="w-4 h-4 text-primary" /> Pagamento seguro via Pix ou Cartão</li>
+                <li className="flex items-center gap-2"><Zap className="w-4 h-4 text-accent" /> Acesso imediato após pagamento</li>
+                <li className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-400" /> 7 dias de garantia total</li>
+                <li className="flex items-center gap-2"><Heart className="w-4 h-4 text-red-400" /> +1.000 famílias impactadas</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+            <p>© {new Date().getFullYear()} 365 Atividades Bíblicas — Todos os direitos reservados.</p>
+            <p className="flex items-center gap-1.5"><Lock className="w-3 h-3" /> Ambiente 100% seguro e criptografado</p>
+          </div>
+        </div>
+      </footer>
 
       {/* ───── UPSELL POPUP ───── */}
       <Dialog open={upsellOpen} onOpenChange={setUpsellOpen}>
