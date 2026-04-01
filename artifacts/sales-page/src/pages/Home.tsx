@@ -155,9 +155,6 @@ function ActivityCarousel() {
         </div>
       </div>
 
-      {/* Gradient fade edges */}
-      <div className="pointer-events-none absolute top-0 left-12 w-12 h-full bg-gradient-to-r from-background to-transparent z-10" />
-      <div className="pointer-events-none absolute top-0 right-12 w-12 h-full bg-gradient-to-l from-background to-transparent z-10" />
     </div>
   );
 }
