@@ -835,47 +835,10 @@ export default function Home() {
       </section>
 
       {/* ───── FOOTER ───── */}
-      <footer className="w-full bg-foreground text-white/70 pt-14 pb-8 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-12">
-            {/* Brand */}
-            <div>
-              <h4 className="text-white font-bold text-lg mb-3">365 Atividades Bíblicas</h4>
-              <p className="text-sm leading-relaxed mb-4">
-                Um plano prático para fortalecer a fé do seu filho e criar uma rotina com Deus desde cedo.
-              </p>
-              <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
-                <MessageCircle className="w-4 h-4" /> Suporte via WhatsApp
-              </div>
-            </div>
-
-            {/* Links */}
-            <div>
-              <h4 className="text-white font-bold mb-3">Informações</h4>
-              <ul className="space-y-2 text-sm">
-                <li>📋 Política de Privacidade</li>
-                <li>📄 Termos de Uso</li>
-                <li>🔒 Compra 100% Segura</li>
-                <li>✅ Aprovado pelo Mercado Pago</li>
-              </ul>
-            </div>
-
-            {/* Trust */}
-            <div>
-              <h4 className="text-white font-bold mb-3">Segurança & Garantia</h4>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2"><Shield className="w-4 h-4 text-primary" /> Pagamento seguro via Pix ou Cartão</li>
-                <li className="flex items-center gap-2"><Zap className="w-4 h-4 text-accent" /> Acesso imediato após pagamento</li>
-                <li className="flex items-center gap-2"><Star className="w-4 h-4 text-amber-400" /> 7 dias de garantia total</li>
-                <li className="flex items-center gap-2"><Heart className="w-4 h-4 text-red-400" /> +1.000 famílias impactadas</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-            <p>© {new Date().getFullYear()} 365 Atividades Bíblicas — Todos os direitos reservados.</p>
-            <p className="flex items-center gap-1.5"><Lock className="w-3 h-3" /> Ambiente 100% seguro e criptografado</p>
-          </div>
+      <footer className="w-full bg-foreground text-white/50 py-6 px-4">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+          <p>© 2026 365 Atividades Bíblicas — Todos os direitos reservados.</p>
+          <p className="flex items-center gap-1.5"><Lock className="w-3 h-3" /> Ambiente 100% seguro e criptografado</p>
         </div>
       </footer>
 
