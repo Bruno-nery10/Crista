@@ -585,9 +585,9 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="text-center">
+          <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="flex justify-center">
             <Button
-              className="h-14 px-8 text-base font-bold bg-primary hover:bg-primary/90 text-white shadow-lg rounded-full"
+              className="h-14 px-8 text-base font-bold bg-primary hover:bg-primary/90 text-white shadow-lg rounded-full w-full sm:w-auto"
               onClick={scrollToPricing}
             >
               QUERO COMEÇAR A JORNADA COM DEUS AGORA
