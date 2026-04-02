@@ -824,6 +824,7 @@ export default function Home() {
                   <Button
                     className="w-full h-14 text-base font-bold bg-primary hover:bg-primary/90 text-white shadow-lg rounded-full"
                     data-testid="button-plan-premium"
+                    onClick={() => window.open("https://pay.wiapy.com/AQ_Ja7ZrqE", "_blank")}
                   >
                     QUERO O COMPLETO AGORA
                   </Button>
@@ -1031,7 +1032,7 @@ export default function Home() {
             <div className="space-y-3">
               <Button
                 className="w-full h-13 text-base font-bold bg-primary hover:bg-primary/90 text-white rounded-full shadow-md"
-                onClick={() => setUpsellOpen(false)}
+                onClick={() => { setUpsellOpen(false); window.open("https://pay.wiapy.com/tX_Emu4qJ", "_blank"); }}
                 data-testid="button-upsell-yes"
               >
                 SIM, QUERO O COMPLETO
@@ -1039,7 +1040,7 @@ export default function Home() {
               <Button
                 variant="ghost"
                 className="w-full h-11 text-muted-foreground hover:text-foreground text-sm rounded-full"
-                onClick={() => setUpsellOpen(false)}
+                onClick={() => { setUpsellOpen(false); window.open("https://pay.wiapy.com/TlMWwbG9az", "_blank"); }}
                 data-testid="button-upsell-no"
               >
                 Não, continuar com o Essencial
