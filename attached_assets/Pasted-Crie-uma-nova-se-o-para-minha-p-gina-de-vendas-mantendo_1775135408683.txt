@@ -1,0 +1,87 @@
+Crie uma nova seção para minha página de vendas, mantendo exatamente o mesmo estilo visual já usado no restante da página: visual clean, moderno, responsivo, com bastante espaço em branco, cantos arredondados, sombra suave, tipografia elegante e boa hierarquia visual.
+
+A nova seção deve seguir a ideia de “qualificação de lead”, no mesmo estilo da referência que vou enviar, mas adaptada ao meu projeto cristão infantil.
+
+## Objetivo da seção
+
+Mostrar claramente para quem o produto é indicado e para quem não é, ajudando o lead a se identificar com a oferta.
+
+## Estrutura da seção
+
+### Selo pequeno acima do título
+
+Adicionar um pequeno selo centralizado acima do título com texto:
+**✝️ PARA QUEM É**
+
+Esse selo deve ter fundo suave, formato arredondado, visual discreto e elegante, seguindo a identidade da página.
+
+### Título principal
+
+Centralizar o título:
+**O 365 Atividades Bíblicas para Crianças é para você?**
+
+Destacar a palavra **“você”** com a cor principal da página.
+
+### Layout dos cards
+
+Abaixo do título, criar dois cards lado a lado no desktop e empilhados no mobile.
+
+#### Card da esquerda
+
+Título:
+**✅ É para você se...**
+
+Itens:
+
+* Você quer ensinar seu filho no caminho de Deus desde cedo
+* Você deseja fortalecer valores cristãos dentro de casa
+* Você busca atividades prontas, educativas e com propósito
+* Você quer criar uma rotina com Deus em família
+* Você procura uma forma simples de aproximar seu filho da Palavra
+
+Esse card deve transmitir segurança e identificação.
+Usar borda verde suave, ícones de check verdes, fundo branco ou levemente esverdeado, cantos arredondados e sombra leve.
+
+#### Card da direita
+
+Título:
+**❌ NÃO é para você se...**
+
+Itens:
+
+* Você procura apenas um passatempo sem propósito
+* Você não valoriza princípios cristãos na educação infantil
+* Você espera resultado sem participar da rotina da criança
+* Você não quer dedicar alguns minutos por dia ao seu filho
+* Você busca um material sem base bíblica
+
+Esse card deve ter visual harmonioso com o da esquerda, mas usando borda em tom coral ou vermelho suave, ícones de X discretos e o mesmo padrão visual da página.
+
+## Estilo visual
+
+* A seção inteira deve ficar no padrão da página já existente
+* Fundo da seção em tom muito suave, sem pesar
+* Espaçamento interno generoso
+* Cards com altura equilibrada
+* Fonte legível no mobile
+* Animações suaves de entrada, como fade-up discreto
+* Layout totalmente responsivo
+* No mobile, os cards devem ficar um abaixo do outro com ótimo espaçamento
+
+## CTA opcional abaixo da seção
+
+Adicionar um botão centralizado abaixo dos cards com o texto:
+**QUERO COMEÇAR A JORNADA COM DEUS AGORA**
+
+O botão deve seguir o padrão dos CTAs da página.
+
+## Posição da seção
+
+Inserir essa seção depois da área de benefícios e antes da seção:
+**“Por que o 365 Atividades Bíblicas para Crianças é diferente de tudo que você já viu?”**
+
+## Importante
+
+Essa seção não deve parecer genérica.
+Ela precisa transmitir clareza, acolhimento, propósito e alinhamento com pais cristãos.
+Mantenha aparência premium, moderna, leve e persuasiva.

@@ -516,6 +516,86 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ───── FOR WHOM ───── */}
+      <section className="w-full py-20 bg-muted/30">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.div {...fadeUp} className="text-center mb-12">
+            <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border border-primary/20">
+              ✝️ PARA QUEM É
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+              O 365 Atividades Bíblicas para Crianças é para{" "}
+              <span className="text-primary">você?</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+            {/* Yes card */}
+            <motion.div {...fadeUp} transition={{ delay: 0.1 }}>
+              <Card className="h-full bg-green-50 border-green-200 shadow-sm">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-base sm:text-lg font-bold text-green-800">
+                    ✅ É para você se...
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {[
+                      "Você quer ensinar seu filho no caminho de Deus desde cedo",
+                      "Você deseja fortalecer valores cristãos dentro de casa",
+                      "Você busca atividades prontas, educativas e com propósito",
+                      "Você quer criar uma rotina com Deus em família",
+                      "Você procura uma forma simples de aproximar seu filho da Palavra",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-green-900 text-sm">
+                        <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* No card */}
+            <motion.div {...fadeUp} transition={{ delay: 0.2 }}>
+              <Card className="h-full bg-red-50 border-red-200 shadow-sm">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-base sm:text-lg font-bold text-red-800">
+                    ❌ NÃO é para você se...
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {[
+                      "Você procura apenas um passatempo sem propósito",
+                      "Você não valoriza princípios cristãos na educação infantil",
+                      "Você espera resultado sem participar da rotina da criança",
+                      "Você não quer dedicar alguns minutos por dia ao seu filho",
+                      "Você busca um material sem base bíblica",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-red-900 text-sm">
+                        <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+
+          <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="text-center">
+            <Button
+              className="h-14 px-8 text-base font-bold bg-primary hover:bg-primary/90 text-white shadow-lg rounded-full"
+              onClick={scrollToPricing}
+            >
+              QUERO COMEÇAR A JORNADA COM DEUS AGORA
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ───── TESTIMONIALS ───── */}
       <section className="w-full py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4">
