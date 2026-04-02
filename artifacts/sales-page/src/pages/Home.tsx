@@ -13,7 +13,7 @@ import act3 from "@assets/49aaf433f5464a5e5efc72fbdaad2879_1775072312454.jpg";
 import act4 from "@assets/07be2bd8224e7c8102b5e6379c2197b9_1775072312455.jpg";
 import act5 from "@assets/4debfcc2071331c826c1133b10cf64b6_1775072312455.jpg";
 import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775072312455.jpg";
-import kidImage from "@assets/Gemini_Generated_Image_jqq4tpjqq4tpjqq4_1775072717175.png";
+import kidImage from "@assets/Gemini_Generated_Image_jqq4tpjqq4tpjqq4_(1)_1775136240250.png";
 import whatsappIcon from "@assets/icone-redondo-do-aplicativo-whatsapp-mensageiro-popular-logo-_1775073841533.avif";
 import guaranteeBadge from "@assets/7-dias-garantia_1775073364898.webp";
 import bonus1 from "@assets/ChatGPT_Image_1_de_abr._de_2026,_17_18_30_1775075294438.png";
