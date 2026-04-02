@@ -700,7 +700,7 @@ export default function Home() {
                 >
                   <Button
                     size="lg"
-                    className="w-full h-14 text-base sm:text-lg rounded-full font-bold bg-primary hover:bg-primary/90 text-white shadow-lg"
+                    className="w-full min-h-14 h-auto py-4 text-xs sm:text-sm md:text-base rounded-full font-bold bg-primary hover:bg-primary/90 text-white shadow-lg leading-tight whitespace-normal"
                     onClick={scrollToPricing}
                     data-testid="button-checkbox-cta"
                   >
