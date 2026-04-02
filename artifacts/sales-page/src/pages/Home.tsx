@@ -250,7 +250,7 @@ export default function Home() {
       >
         <p className="text-center font-bold uppercase text-white/95 transition-all duration-500 truncate"
           style={{ fontSize: scrolled ? "9px" : "11px", letterSpacing: scrolled ? "0.12em" : "0.18em" }}>
-          🎁 PROMOÇÃO APENAS NESSA PÁGINA — OFERTA POR TEMPO LIMITADO 🎁
+          PROMOÇÃO APENAS NESSA PÁGINA
         </p>
       </div>
 
