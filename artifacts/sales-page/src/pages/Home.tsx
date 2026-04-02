@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Star, Lock, Zap, Shield, Heart, HeartHandshake, CheckCircle2, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
+import { Check, X, Star, Lock, Zap, Shield, Heart, HeartHandshake, CheckCircle2, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -669,9 +669,26 @@ export default function Home() {
                     <span className="text-lg text-white/50 font-normal">R$ </span>9,99
                   </div>
                   <ul className="space-y-3">
-                    {["365 atividades bíblicas", "Entrega via e-mail", "Suporte por e-mail"].map((f, i) => (
-                      <li key={i} className="flex items-center gap-3 text-white/75 text-sm">
-                        <Check className="w-4 h-4 text-primary shrink-0" /> {f}
+                    {[
+                      { label: "365 atividades bíblicas", included: true },
+                      { label: "Entrega via e-mail", included: true },
+                      { label: "Suporte por e-mail", included: true },
+                      { label: "Cartões bíblicos", included: false },
+                      { label: "Rotina cristã infantil", included: false },
+                      { label: "21 histórias bíblicas", included: false },
+                      { label: "Guia para pais", included: false },
+                      { label: "Vídeos animados cristãos", included: false },
+                      { label: "Músicas infantis cristãs", included: false },
+                      { label: "Entrega via Drive + Email + WhatsApp", included: false },
+                      { label: "Grupo VIP", included: false },
+                      { label: "Suporte prioritário", included: false },
+                    ].map((f, i) => (
+                      <li key={i} className={`flex items-center gap-3 text-sm ${f.included ? "text-white/75" : "text-white/40"}`}>
+                        {f.included
+                          ? <Check className="w-4 h-4 text-primary shrink-0" />
+                          : <X className="w-4 h-4 text-red-500 shrink-0" />
+                        }
+                        <span className={f.included ? "" : "line-through"}>{f.label}</span>
                       </li>
                     ))}
                   </ul>
