@@ -14,6 +14,7 @@ import act4 from "@assets/07be2bd8224e7c8102b5e6379c2197b9_1775072312455.jpg";
 import act5 from "@assets/4debfcc2071331c826c1133b10cf64b6_1775072312455.jpg";
 import act6 from "@assets/ecb9d86148872ca33335caa387223443_1775072312455.jpg";
 import kidImage from "@assets/Gemini_Generated_Image_jqq4tpjqq4tpjqq4_(1)_1775136240250.png";
+import activitiesCollage from "@assets/Gemini_Generated_Image_1js7gf1js7gf1js7_(1)_1775331167959.png";
 import whatsappIcon from "@assets/icone-redondo-do-aplicativo-whatsapp-mensageiro-popular-logo-_1775073841533.avif";
 import guaranteeBadge from "@assets/7-dias-garantia_1775073364898.webp";
 import bonus1 from "@assets/ChatGPT_Image_1_de_abr._de_2026,_17_18_30_1775075294438.png";
@@ -341,41 +342,76 @@ export default function Home() {
       </section>
 
       {/* ───── SOLUTION ───── */}
-      <section className="w-full py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div {...fadeUp}>
+      <section className="w-full py-20 px-4 bg-primary/3">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <motion.div {...fadeUp} className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Método 10 Minutos com Deus</h2>
             <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-6" />
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Um sistema simples e prático que ajuda pais a ensinarem seus filhos no caminho de Deus
               através de atividades leves, educativas e com propósito espiritual.
             </p>
           </motion.div>
+
+          {/* Steps row */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+            {[
+              { step: "01", icon: "🕐", title: "10 minutos por dia", desc: "Atividades curtas, pensadas para a rotina real das famílias" },
+              { step: "02", icon: "📖", title: "Baseado na Bíblia", desc: "Cada atividade conecta a criança a um ensinamento bíblico" },
+              { step: "03", icon: "✝️", title: "Resultado que fica", desc: "Fé e valores que crescem com a criança dia após dia" },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-sm border border-border text-center"
+              >
+                <div className="text-3xl mb-3">{s.icon}</div>
+                <span className="text-xs font-bold text-primary/50 tracking-widest uppercase">Passo {s.step}</span>
+                <h3 className="text-base font-bold text-foreground mt-1 mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Two images side by side */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl overflow-hidden shadow-md"
+            >
+              <img
+                src={kidImage}
+                alt="Criança fazendo atividades bíblicas na mesa"
+                className="w-full h-64 sm:h-72 object-cover"
+                loading="lazy"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="rounded-2xl overflow-hidden shadow-md"
+            >
+              <img
+                src={activitiesCollage}
+                alt="Crianças explorando atividades bíblicas"
+                className="w-full h-64 sm:h-72 object-cover"
+                loading="lazy"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ───── LIFESTYLE IMAGE + PHRASES ───── */}
-      <section className="w-full overflow-hidden">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center">
-
-          {/* Image side */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="w-full lg:w-1/2"
-          >
-            <img
-              src={kidImage}
-              alt="Criança feliz fazendo atividades bíblicas"
-              className="w-full h-auto object-cover lg:rounded-r-3xl"
-              loading="lazy"
-            />
-          </motion.div>
-
-          {/* Phrases side */}
-          <div className="w-full lg:w-1/2 px-6 sm:px-10 py-12 lg:py-20 flex flex-col gap-8 items-center lg:items-start text-center lg:text-left">
+      {/* ───── LIFESTYLE PHRASES ───── */}
+      <section className="w-full py-20 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col gap-8 items-center text-center">
             {[
               {
                 icon: "✝️",
@@ -426,7 +462,6 @@ export default function Home() {
                 QUERO ESSA TRANSFORMAÇÃO
               </Button>
             </motion.div>
-          </div>
         </div>
       </section>
 
